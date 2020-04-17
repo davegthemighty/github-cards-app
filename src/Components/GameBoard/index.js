@@ -3,6 +3,7 @@ import './index.css';
 import utils from '../../utils'
 import useGameState from '../../state'
 
+import CountdownTimer from '../CountdownTimer';
 import PlayNumber from '../PlayNumber';
 import RestartGame from '../RestartGame';
 import StarsDisplay from '../StarsDisplay';
@@ -13,7 +14,7 @@ import StarsDisplay from '../StarsDisplay';
 
 const GameBoard = (props) => {
 
-  const {stars, unusedNumbers, selectedNumbers, secondsLeft, gameStatus, setGameState} = useGameState();
+  const {stars, unusedNumbers, selectedNumbers, gameStatus, setGameState, secondsLeft, setSecondsLeft} = useGameState();
 
   const numberStatus = (number) => {
     if (!unusedNumbers.includes(number)){
@@ -59,7 +60,7 @@ const GameBoard = (props) => {
         }
         </div>
       </div>
-      <div className="timer">Time Remaining: {secondsLeft}</div>
+      <CountdownTimer secondsLeft={secondsLeft} setSecondsLeft={setSecondsLeft}></CountdownTimer>
     </div>
   );
 };
